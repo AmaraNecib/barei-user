@@ -65,22 +65,21 @@ const Contact = ({displayAddress,deleteAddress,putAddress,onClick}) => {
             </div>
 
             {displayAddress && displayAddress?.address.map((addr, index) => {
-                const id = addr.id;
-                console.log(addr.id)
+                const id = addr?.id;
                 return (
                     <div className="mb-16 " key={index}>
                         <div className="box flex jsustify-center  w-2/3 bg-gradient-to-b from-gray-50  via-white to-gray-50 mx-auto border border-fuchsia-200 shadow-sm shadow-fuchsia-200 rounded-xl h-fit mb-5 p-4 m-5">
                             <div className="flex flex-col gap-1 w-full ">
                                 <p className="street font-light border-b  p-2 ">
-                                    <span className="font-normal text-blue-700"> العنوان :  </span> {addr.address}</p>
+                                    <span className="font-normal text-blue-700"> العنوان :  </span> {addr?.address}</p>
                                 <p className="street font-light border-b  p-2 "><span
-                                    className="font-normal text-blue-700"> المدينة :  </span> {addr.city}</p>
+                                    className="font-normal text-blue-700"> المدينة :  </span> {addr?.city}</p>
                                 <p className="street font-light border-b  p-2 "><span
-                                    className="font-normal text-blue-700"> الولاية :  </span> {addr.state}</p>
+                                    className="font-normal text-blue-700"> الولاية :  </span> {addr?.state}</p>
                                 <p className="street font-light border-b  p-2 "><span
-                                    className="font-normal text-blue-700"> الهاتف :  </span> {addr.primaryPhone}</p>
+                                    className="font-normal text-blue-700"> الهاتف :  </span> {addr?.primaryPhone}</p>
                                 <p className="street font-light border-b  p-2 "><span
-                                    className="font-normal text-blue-700"> الهاتف الإضافي :  </span> {addr.secondaryPhone}</p>
+                                    className="font-normal text-blue-700"> الهاتف الإضافي :  </span> {addr?.secondaryPhone}</p>
                                 <div className={"mx-auto flex gap-2"}>
                                     <Dialog className="relative z-50" >
                                         <DialogTrigger asChild>

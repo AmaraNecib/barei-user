@@ -3,15 +3,12 @@
 import * as React from 'react';
 import Link from "next/link";
 import { useState } from 'react';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Label } from "@/components/ui/label"
-import Button from "../Button/Button";
 import 'aos/dist/aos.css';
 import data from "@/data/data"
-import ItemAddress from "@/components/Order/ItemAddress"
 import AddLocationIcon from '@mui/icons-material/AddLocation';
 import { object, string } from 'zod';
-
+import { useToast } from "@/components/ui/use-toast"
 const addressSchema = object({
     address: string().min(1).max(255),
     city: string().min(1).max(50),
@@ -21,7 +18,8 @@ const addressSchema = object({
 });
 
 
-function AddAddressForm({onClick,postAddress}) {
+function AddAddressForm({postAddress}) {
+    const { toast } = useToast();
 
     const handleSubmitInput = async (e) => {
         e.preventDefault();
@@ -48,7 +46,11 @@ function AddAddressForm({onClick,postAddress}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await  postAddress (address,city,state,phonePrimary,phoneSecondiry);
+        await postAddress(address, city, state, phonePrimary, phoneSecondiry);
+        toast({
+            title: "تم إضافة العنوان",
+            description: new Date().toLocaleTimeString(),
+            });
     };
 
     const [showComponentAddress, setComponentAddress] = useState(false);
@@ -59,12 +61,10 @@ function AddAddressForm({onClick,postAddress}) {
 
     return (
         <>
-            <div className="relative py-5 bg-white mx-8 md:mx-0 shadow-md shadow-fuchsia-500 w-[55rem]  rounded-3xl sm:p-10  ">
+            <div className="relative py-5 bg-white mx-8 md:mx-0 shadow-md shadow-fuchsia-300 w-[55rem]  rounded-3xl sm:p-10  ">
                 <div className="flex border-b border-fuchsia-700 mb-16">
-                    <Link href={"/orders"} className="flex">
-                        <AddLocationIcon className="text-xl m-2 text-fuchsia-700"/>
+                        <AddLocationIcon className="text-xl m-2 my-auto text-fuchsia-700"/>
                         <h1 className="text-center text-xl  my-auto text-fuchsia-700 pb-3"> إضافة عنوان جديد </h1>
-                    </Link>
                 </div>
                 <div className="grid grid-cols-2 gap-4 ">
 
@@ -140,14 +140,17 @@ function AddAddressForm({onClick,postAddress}) {
                         />
                     </div>
 
-                </div>
+            </div>
                 <button
                     className={`my-5  relative py-3 mx-auto flex justify-left px-10 text-white text-base font-bold nded-full overflow-hidden bg-fuchsia-500 rounded-full transition-all duration-400 ease-in-out shadow-md hover:scale-105 hover:shadow-lg active:scale-90  before:transition-all before:duration-500 before:ease-in-out before:z-[-1]`}
                     onClick={(e) => {
                         e.preventDefault();
                         handleSubmit(e);
-                    }} >
-                    إضافة العنوان
+                }} >
+
+                    <Link href={'/profile/addresses'}>
+                        إضافة العنوان
+                    </Link>
                 </button>
             </div>
         </>

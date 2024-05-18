@@ -29,7 +29,7 @@ export default function Sidebar({ logout, ProfileInfo }) {
                     <div className="flex items-center justify-between">
                         <div className="flex items-center justify-start">
                             <Image src={ProfileInfo.user.gender === 'انثى' ?  girlAvatar : manAvatar} alt="logo" width={50} height={50} className="rounded-full ml-3" />
-                            <h6>{ ProfileInfo.user.firstName +  ProfileInfo.user.lastName}</h6>
+                            <h6>{ ProfileInfo.user.firstName + " " +  ProfileInfo.user.lastName}</h6>
                         </div>
                         <div className="">
                         <Link href={'/products'} className="b-0 mx-auto text-gray-600  rounded-full text-center py-2 no-underline mt-4">

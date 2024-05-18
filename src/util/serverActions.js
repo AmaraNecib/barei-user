@@ -17,13 +17,13 @@ export const getProducts = async () => {
             }
         );
         const data = await products.json();
+        console.log(data);
         return data;
     } catch (error) {
         console.error(error);
         return [];
     }
 }
-
 ///////////////////////////////////////////////////////////
 
     export const getProductsItem = async (id) => {
@@ -577,7 +577,7 @@ export const deleteCartItem = async (cartItemId) => {
     }
     //////////////////////////////////////////////////////////////////
 
-    export async function putAddress({address, city, state, primaryPhone, secondaryPhone, id}) {
+    export async function putAddress(address, city, state, primaryPhone, secondaryPhone, id) {
         try {
             const token = cookies().get("token").value;
             const res = await fetch(
@@ -711,7 +711,29 @@ export const deleteCartItem = async (cartItemId) => {
             return {};
         }
     }
-    ////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+       export const storeProfile = async (id) => {
+        "use server"
+
+        try {
+            const token = cookies().get("token").value;
+            const storeProfile = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URL}/api/profile/store/${id}`,
+                {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                }
+            );
+            const data = await storeProfile.json();
+            return data;
+        } catch (error) {
+            console.error(error);
+            return [];
+        }
+    }
     export async function logout() {
         cookies().delete("token")
     }
@@ -741,4 +763,79 @@ export const deleteCartItem = async (cartItemId) => {
         console.log(res)
     }
 
-    
+        //////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////
+                ///////////////////////////////////////////////
+                    ///////////////////////////////////////
+                        ///////////////////////////////
+                            //////////////////////
+                            
+    export const followingShops = async () => {
+        "use server"
+
+        try {
+            const token = cookies().get("token").value;
+            const followingShops = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URL}/api/favorite/store`,
+                {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                }
+            );
+            const data = await followingShops.json();
+            return data;
+        } catch (error) {
+            console.error(error);
+            return [];
+        }
+    }
+/////////////////////////////////////////////////////////////////
+    export async function follow(storeId) {
+        "use server"
+        console.log(oldPassword,newPassword,confirmPassword)
+        const token = cookies().get("token").value
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/api/favorite/store/${storeId}`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify({storeId})
+            }
+        ).then(res => res.json());
+        console.log(res)
+    }
+/////////////////////////////////////////////////////////////
+    export const unFollow = async (storeId) => {
+        "use server"
+
+        try {
+            const token = cookies().get("token").value;
+            const response = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URL}/api/favorite/store/${storeId}`,
+                {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({storeId})
+                }
+            );
+
+            if (response.ok) {
+                console.log('profile unfollowed successfully');
+            } else {
+                const errorData = await response.json();
+                throw new Error(errorData.message);
+            }
+        } catch (error) {
+            console.error(error);
+            return {};
+        }
+    }

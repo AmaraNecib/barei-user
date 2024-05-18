@@ -13,12 +13,12 @@ const Order = async () => {
     return (
         <>
             <div className="container px-0 rounded-lg shadow-lg my-32">
-                {displayOrders?.orders?.length <= 0 ?
-                    <EmptyOrder/>
-                    :
+                {displayOrders?.orders?.length > 0 ?
                     <Suspense  fallback={<OrderSkeleton/>}>
                         <AllOrders displayOrders={displayOrders} />
                     </Suspense>
+                    :
+                    <EmptyOrder/>
                 }
             </div>
         </>  

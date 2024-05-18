@@ -112,7 +112,7 @@ export default async function Navbar({searchParams}) {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="">
                 <DropdownMenuItem>
-                  <Link href={"/profile/profile-info"}>
+                  <Link href={"/profile"}>
                     <div className="flex">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                            className="bi bi-gear ml-2" viewBox="0 0 16 16">

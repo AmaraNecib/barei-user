@@ -1,5 +1,5 @@
 "use client"
-import Link from "next/Link";
+import Link from "next/link";
 import Image from 'next/image';
 import Button from '../Button/Button';
 import basket from "../../../public/images/avatar/img1.png"

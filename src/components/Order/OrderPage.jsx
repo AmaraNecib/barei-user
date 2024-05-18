@@ -18,7 +18,7 @@ import {deleteAddress, postAddress, postOrder} from "@/util/serverActions";
 function OrderPage({displayAddresses,postAddress,deleteAddress,displayCart, postOrder}) {
   const [currentComponent, setCurrentComponent] = useState('');
   useEffect(() => {
-    if (displayAddresses?.address.length === 0) {
+    if (displayAddresses?.address.length < 2) {
       setCurrentComponent('EmptyAddress');
     } else {
       setCurrentComponent('ItemAddress');
@@ -28,10 +28,7 @@ function OrderPage({displayAddresses,postAddress,deleteAddress,displayCart, post
   const handleComponentChange = (newComponent) => {
     setCurrentComponent(newComponent);
   };
-
-  console.log(displayCart.cartId)
-  console.log(displayAddresses.address[0].id)
-
+console.log(displayAddresses)
     return (
     <section className="pt-0 my-16" >
       <div className="hidden lg:grid pb-6 ">
@@ -50,7 +47,7 @@ function OrderPage({displayAddresses,postAddress,deleteAddress,displayCart, post
             <CheckCircleOutlineIcon className='text-skate-400 mx-3 my-auto text-fuchsia-800'/>
             <h3 className='text-fuchsia-700 font-extrabold text-xl'> 1. عنوان العميل </h3>
           </div>
-          {displayAddresses?.address.length == 0 ? (
+          {displayAddresses?.address?.length < 2 ? (
               <>
                 {currentComponent === 'EmptyAddress' && (
                     <EmptyAddress onClick={handleComponentChange}/>
@@ -102,7 +99,7 @@ function OrderPage({displayAddresses,postAddress,deleteAddress,displayCart, post
           <div className="mx-16">
             <div className="flex items-center justify-between w-full mb-6">
               <p className="font-normal text-xl leading-8 text-gray-400">السعر الإجمالي</p>
-              <h6 className="font-semibold text-xl leading-8 text-gray-900"> {displayCart.total} دج</h6>
+              <h6 className="font-semibold text-xl leading-8 text-gray-900"> {displayCart?.total} دج</h6>
             </div>
             <div className="flex items-center justify-between w-full pb-6 border-b border-gray-200">
               <p className="font-normal text-xl leading-8 text-gray-400">تكلفة التوصيل</p>

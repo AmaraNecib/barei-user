@@ -1,5 +1,5 @@
 "use server"
-import Sidebar from "@/components/profile/sidbar";
+import Sidebar from "@/components/profile/Sidebar";
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import React from "react";

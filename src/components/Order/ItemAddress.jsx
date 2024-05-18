@@ -35,19 +35,19 @@ function ItemAddress({ onClick, displayAddresses, postAddress, deleteAddress }) 
                 <h5 className={'text-lg font-semibold'}>دليل العناوين</h5>
                 <FormGroup>
                     {displayAddresses?.address.map((item) => (
-                        <div className="border p-3 my-3 flex justify-between" key={item.id}>
+                        <div className="border p-3 my-3 flex justify-between" key={item?.id}>
                             <FormControlLabel
                                 control={<Checkbox
-                                    checked={checkedItemId === item.id}
-                                    onChange={(event) => handleChangeCheck(event, item.id)}
+                                    checked={checkedItemId === item?.id}
+                                    onChange={(event) => handleChangeCheck(event, item?.id)}
                                 />}
                                 className={'my-auto'}
                             />
 
                             <div className="my-1 mx-5">
-                                <p className="mb-1">العنوان : {item.address} | {item.city} | {item.state}</p>
-                                <p className="mb-1">الرقم الأساسي : {item.primaryPhone}<span> 213 + </span></p>
-                                <p className="mb-1"> الرقم الثانوي :{item.secondaryPhone} <span> 213 + </span></p>
+                                <p className="mb-1">العنوان : {item?.address} | {item?.city} | {item?.state}</p>
+                                <p className="mb-1">الرقم الأساسي : {item?.primaryPhone}<span> 213 + </span></p>
+                                <p className="mb-1"> الرقم الثانوي :{item?.secondaryPhone} <span> 213 + </span></p>
                             </div>
 
                             <AlertDialog>

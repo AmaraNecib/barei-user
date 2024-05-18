@@ -30,7 +30,7 @@ const Contact = ({displayAddress,deleteAddress,putAddress,onClick}) => {
 
     const handleSubmit = async (e,id) => {
         e.preventDefault();
-        await  putAddress ({address, city, state, phonePrimary, phoneSecondiry}, id);
+        await  putAddress (address, city, state, phonePrimary, phoneSecondiry, id);
         toast({
             title: "تم تعديل عنوانك بنجاح",
             status: "success",

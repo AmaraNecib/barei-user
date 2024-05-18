@@ -1,13 +1,13 @@
 'use server'
-import Profileinfo from '@/components/profile/Profileinfo'
+import ProfileInfo from '@/components/profile/ProfileInfo'
 import { getProfileInfo , putProfileInfo } from "@/util/serverActions";
 
-export default async function ProfileInfo() {
+export default async function Profileinfo() {
     const profileInfo = await getProfileInfo();
     return (
         <>
             <div className="mr-80 mt-24">
-                <Profileinfo putProfileInfo={putProfileInfo} profileInfo={profileInfo} />
+                <ProfileInfo putProfileInfo={putProfileInfo} profileInfo={profileInfo} />
             </div>
         </>
     )

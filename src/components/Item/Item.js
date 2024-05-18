@@ -6,7 +6,6 @@ import { useState ,useEffect } from "react";
 import { useToast } from "@/components/ui/use-toast"
 import { Avatar, AvatarFallback} from "@/components/ui/avatar"
 import Link from "next/link";
-import Cookies from 'js-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -74,7 +73,7 @@ export function Item({ id, title, price, image, postFavorite ,postCart,storeImag
                 />
               </AvatarFallback>
             </Avatar>
-            <Link href="" className="my-auto">
+            <Link href={`/store-profile`} className="my-auto">
               <p className="mr-3 text-sm"> {storeName} </p>
             </Link>
           </div>
@@ -107,9 +106,9 @@ export function Item({ id, title, price, image, postFavorite ,postCart,storeImag
               </div>
               <div className="eye p-1 m-1 rounded-full bg-blue-500">
                 <Link
-                  href={`/products/${id}`}
+                  href={`/products/${storeName}`}
                   key={id}
-                  className="no-underline font-bold text-sm pb-2 "
+                  className="no-underline text-black font-bold text-sm pb-2 "
                 >
                   <HoverCard>
                     <HoverCardTrigger>

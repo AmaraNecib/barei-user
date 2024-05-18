@@ -49,9 +49,9 @@ export function Cart({cart,DeleteCart,DeleteCartItem,updateQuantity}) {
 
 // Decrease the Quantity
     const decreaseQty = (cartItemId,productId) => {
-        const updatedItems = cart.items.map(item => {
-            if (item.productId === productId && item.quantity > 1) {
-                return { ...item, quantity: item.quantity - 1 };
+        const updatedItems = cart?.items?.map(item => {
+            if (item?.productId === productId && item?.quantity > 1) {
+                return { ...item, quantity: item?.quantity - 1 };
             }
             return item;
         });
@@ -73,31 +73,31 @@ export function Cart({cart,DeleteCart,DeleteCartItem,updateQuantity}) {
       {cart && (
         <div className="w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto">
           {cart?.items?.map((item) => (
-            <div key={item.productId}>
+            <div key={item?.productId}>
             <div className="grid grid-cols-1 lg:grid-cols-2 min-[550px]:gap-6 border-t border-gray-200 py-3">
                 <div
                     className="flex items-center flex-col min-[500px]:flex-row gap-3 min-[550px]:gap-6 w-full max-xl:justify-center max-xl:max-w-xl max-xl:mx-auto">
                   <div className="img-box">
-                    <Link href={`/products/${item.productId}`}>
-                      <Image src={item.product.image.length > 0 ? item.product.image[0] : basket} alt="perfume bottle image" className="xl:w-[140px] xl:h-[100px] h-28" width={200} height={200} />
+                    <Link href={`/products/${item?.productId}`}>
+                      <Image src={item?.product?.image?.length > 0 ? item?.product?.image[0] : basket} alt="perfume bottle image" className="xl:w-[140px] xl:h-[100px] h-28" width={200} height={200} />
                     </Link>
                   </div>
                     <div className="pro-data w-full max-w-sm ">
-                        <h5 className="font-semibold text-xl leading-8 text-black max-[550px]:text-center">{item.product.name}</h5>
+                        <h5 className="font-semibold text-xl leading-8 text-black max-[550px]:text-center">{item?.product?.name}</h5>
                         <p
                             className="font-normal text-lg leading-8 text-gray-500 my-2 min-[550px]:my-3 max-[550px]:text-center">
-                            {item.storeName} المتجر : </p>
+                            {item?.storeName} المتجر : </p>
                         <h6 className="font-medium text-lg leading-8 text-indigo-600  max-[550px]:text-center"></h6>
                     </div>
                 </div>
                 <div
                     className="flex items-center flex-col min-[550px]:flex-row w-full max-xl:max-w-xl max-xl:mx-auto gap-2">
                     <h6 className="font-manrope font-bold text-2xl leading-9 text-black w-full max-w-[176px] text-center">
-                     {item.product.price} دج</h6>
+                     {item?.product?.price} دج</h6>
                     <div className="flex items-center w-full mx-auto justify-center">
                         <button
                           className="group rounded-r-full px-2 py-2 border border-gray-200 flex items-center justify-center shadow-sm shadow-transparent transition-all duration-500 hover:shadow-gray-200 hover:border-gray-300 hover:bg-gray-50"
-                          onClick={()=> updateQuantity(item.productId,-1)}
+                          onClick={()=> updateQuantity(item?.productId,-1)}
                         >
                             <svg className="stroke-gray-900 transition-all duration-500 group-hover:stroke-black"
                                 xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
@@ -112,7 +112,7 @@ export function Cart({cart,DeleteCart,DeleteCartItem,updateQuantity}) {
                             value={item?.quantity ?? 1}/>
                         <button
                           className="group rounded-l-full px-2 py-2 border border-gray-200 flex items-center justify-center shadow-sm shadow-transparent transition-all duration-500 hover:shadow-gray-200 hover:border-gray-300 hover:bg-gray-50"
-                          onClick={()=> updateQuantity(item.productId,1)}
+                          onClick={()=> updateQuantity(item?.productId,1)}
                         >
                             <svg className="stroke-gray-900 transition-all duration-500 group-hover:stroke-black"
                                 xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
@@ -127,7 +127,7 @@ export function Cart({cart,DeleteCart,DeleteCartItem,updateQuantity}) {
                         </button>
                       
                     </div>
-                    <h6 className="text-indigo-600 font-manrope font-bold text-2xl leading-9 w-full max-w-[176px] text-center">{item.product.price * item.quantity} دج</h6>
+                    <h6 className="text-indigo-600 font-manrope font-bold text-2xl leading-9 w-full max-w-[176px] text-center">{item?.product?.price * item?.quantity} دج</h6>
                   
 
                   <AlertDialog  className="bg-red-50 rounded-full p-2">
@@ -145,7 +145,7 @@ export function Cart({cart,DeleteCart,DeleteCartItem,updateQuantity}) {
                       </AlertDialogHeader>
                       <AlertDialogFooter className="mx-auto">
                         <AlertDialogCancel>إلغاء</AlertDialogCancel>
-                        <AlertDialogAction onClick={()=> DeleteItem(item.cartItemId)} className="bg-red-600">حذف</AlertDialogAction>
+                        <AlertDialogAction onClick={()=> DeleteItem(item?.cartItemId)} className="bg-red-600">حذف</AlertDialogAction>
                       </AlertDialogFooter>
                     </AlertDialogContent>
                   </AlertDialog>
